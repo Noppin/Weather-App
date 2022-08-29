@@ -1,0 +1,74 @@
+
+.bg{
+    background: url("./bg.jpg");
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    
+}
+
+.bg::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    opacity: 0.5;
+    z-index: -1;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+.container .title{
+    align-self: center;
+    color: #fff;
+    margin-bottom: 2rem;
+
+}
+.searchWeather{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+.searchWeather input{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+}
+
+.searchWeather button{
+    border: 2px solid #fff;
+    background-color: #fff;
+    color: #333;
+        padding: .5rem 1rem;
+        border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+.searchWeather button:hover{
+    background-color: transparent;
+        color: #fff;
+}
+
+.data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.card{
+    background-color: rgb(198, 216, 216);
+}
+
+.alertOutline{
+   border: 4px solid red !important;
+}
