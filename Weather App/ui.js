@@ -2,17 +2,34 @@ import get from "./getEl.js";
 
 class UI{
     constructor(){
-        this.bgImg ="https://source.unsplash.com/1600x900/?";
+        this.bgImg ="https://pixabay.com/api/?key=29853667-bb7c2c56c554c3148dcf3f0ba&image_type=photo&q="; // this api key is just for the purpose of this project
         this.container = get(".content");
         this.bg = get(".bg");
     }
-
-    showContent({temp, feels_like, pressure, humidity,lon, lat,name,timezone, speed, main, icon}, input){
-                this.bg.style.background = `url(${this.bgImg}${input})`;
+    async fetchImage(q){
+      try{
+        const url = `${this.bgImg}${q}`;
+      const res = await (await fetch(url)).json();
+      const {hits} = res;
+      const {largeImageURL:img} = hits[rand(hits.length)];
+      return img;
+      function rand (length){
+            return Math.floor(Math.random()*length);
+      }
+      }
+      catch(error){
+            console.log(error);
+      }
+      
+    }
+    showContent({temp, feels_like, pressure, humidity,lon, lat,name, speed, main, icon}, input){
+                this.fetchImage(input).then((data)=>{
+                  this.bg.style.background = `url(${data}})`;
+                });
+               
                 this.container.innerHTML = `
                 
                 <div class="container py-5 h-100">
-              
                   <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-md-8 col-lg-6 col-xl-4">
               
@@ -27,7 +44,6 @@ class UI{
                             <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> ${temp}°C </h6>
                             <span class="small" style="color: #868B94">${main}</span>
                           </div>
-              
                           <div class="d-flex align-items-center">
                             <div class="flex-grow-1" style="font-size: 1rem;">
                               <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> ${speed}km/h
@@ -49,7 +65,6 @@ class UI{
                               width="100px">
                           </div>
                           </div>
-              
                         </div>
                       </div>
               
@@ -59,7 +74,6 @@ class UI{
                 </div>
                 `;
     }
-
     showAlert(){
        const input = get("#userInput");
        input.className = "alertOutline";

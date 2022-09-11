@@ -6,6 +6,7 @@ class Weather{
     async fetchWeather(userInput){
         try {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=metric&appid=${this.api}`;
+
             const data = await (await fetch(url)).json();
             const {main:{temp, feels_like, pressure, humidity}, coord:{lon, lat},name, wind:{speed}} = data;
             const {weather} = data
@@ -15,7 +16,7 @@ class Weather{
                 temp, feels_like, pressure, humidity,
                 lon, lat,
                 name, speed,
-                main, icon
+                main, icon  
             }
         } catch (error) {
             console.log(error);

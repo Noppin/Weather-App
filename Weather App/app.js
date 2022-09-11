@@ -17,6 +17,7 @@ btn.addEventListener("click", ()=>{
     if(userInput.value !== ""){
         weather.fetchWeather(userInput.value)
         .then(data=> {
+                console.log(data);
             if(data)ui.showContent(data, userInput.value);
             else ui.showAlert();
         });
@@ -25,8 +26,7 @@ btn.addEventListener("click", ()=>{
         ui.showAlert();
     }
     
-})
-
+});
 
 
 

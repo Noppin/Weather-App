@@ -85,8 +85,6 @@
 @media screen and (max-width: 300px) {
     .searchWeather{
         flex-direction: column;
-  
-    
     }
 
     .container .title{
