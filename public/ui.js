@@ -2,13 +2,13 @@ import get from "./getEl.js";
 
 class UI{
     constructor(){
-        this.bgImg ="https://pixabay.com/api/?key=29853667-bb7c2c56c554c3148dcf3f0ba&image_type=photo&q="; // this api key is just for the purpose of this project
+        this.bgImg ="http://localhost:3000/photo?q=";
         this.container = get(".content");
         this.bg = get(".bg");
     }
     async fetchImage(q){
       try{
-        const url = `${this.bgImg}${q}`;
+        const url = `${this.bgImg}${q}&image_type=photo`;
       const res = await (await fetch(url)).json();
       const {hits} = res;
       const {largeImageURL:img} = hits[rand(hits.length)];
