@@ -2,7 +2,7 @@ class Weather{
 
     async fetchWeather(userInput){
         try {
-            const url = `http://localhost:3000/api?q=${userInput}&units=metric`;
+            const url = `/api?q=${userInput}&units=metric`;
 
             const data = await (await fetch(url)).json();
             const {main:{temp, feels_like, pressure, humidity}, coord:{lon, lat},name, wind:{speed}} = data;

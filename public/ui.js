@@ -2,7 +2,7 @@ import get from "./getEl.js";
 
 class UI{
     constructor(){
-        this.bgImg ="http://localhost:3000/photo?q=";
+        this.bgImg ="/photo?q=";
         this.container = get(".content");
         this.bg = get(".bg");
     }
