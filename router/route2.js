@@ -19,7 +19,7 @@ router.get("/", async(req, res)=>{
         const data = apiRes.body;
 
         if(process.env.NODE_ENV !== 'production'){
-            console.log(`Request: ${apiBase}?${params}`);
+            console.log(`Request: ${apiBasePhoto}?${params}`);
         }
 
     res.status(200).json(data);
